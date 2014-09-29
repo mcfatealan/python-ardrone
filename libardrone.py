@@ -73,6 +73,16 @@ class ARDrone(object):
 #        self.image = ""
         self.navdata = dict()
         self.time = 0
+        self.video_channel = 0
+        self.at(at_config, "video:video_channel", "0")
+
+    def change_camera(self):
+        if self.video_channel == 0:
+            self.at(at_config, "video:video_channel", "1")
+            self.video_channel = 1
+        else:
+            self.at(at_config, "video:video_channel", "0")
+            self.video_channel = 0
 
     def takeoff(self):
         """Make the drone takeoff."""

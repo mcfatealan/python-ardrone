@@ -37,7 +37,11 @@ def main():
     while cap.isOpened:
         ret, frame = cap.read()
 
-        cv2.imshow('frame', frame)
+        try:
+            cv2.imshow('frame', frame)
+        except:
+            print "Some error has occured!"
+            drone.reset()
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q'):
             drone.halt()
@@ -70,6 +74,10 @@ def main():
             drone.turn_left()
         elif key == 65363:
             drone.turn_right()
+
+        # change camera
+        elif key == ord('t'):
+            drone.change_camera()
             # speed
         elif key == ord('1'):
             drone.speed = 0.1
