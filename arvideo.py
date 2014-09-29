@@ -29,7 +29,12 @@ in a way that it works also without psyco installed. On the author's
 development machine the speed up is from 2FPS w/o psyco to > 20 FPS w/ psyco.
 """
 
+"""
+It seems that this code does not work any more.
+So in the new code we do not use this file.
 
+But reposity still contains this file for who is interested.
+"""
 import array
 import cProfile
 import datetime
@@ -522,6 +527,9 @@ def read_picture(data):
     bitreader = BitReader(data)
     t = datetime.datetime.now()
     width, height = get_pheader(bitreader)
+    file = open("test", "w")
+    file.write(str(width) + str(height))
+    file.close()
     slices = height / 16
     blocks = width / 16
     image = [0 for i in range(width*height)]

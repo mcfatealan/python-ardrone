@@ -109,7 +109,8 @@ def main():
             hud = f.render('Battery: %i%%' % bat, True, hud_color)
             screen.blit(surface, (0, 0))
             screen.blit(hud, (10, 10))
-        except:
+        except pygame.error as err:
+            print err
             pass
 
         pygame.display.flip()

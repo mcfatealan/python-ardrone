@@ -25,6 +25,12 @@ Python library for the AR.Drone.
 This module was tested with Python 2.6.6 and AR.Drone vanilla firmware 1.5.1.
 """
 
+"""
+Modify the code tu use OpenCV to get the video stream, since the old
+code does not work any longer.
+
+-- By Quanyang Liu.
+"""
 
 import socket
 import struct
@@ -36,7 +42,6 @@ import arnetwork
 
 
 __author__ = "Bastian Venthur"
-
 
 ARDRONE_NAVDATA_PORT = 5554
 ARDRONE_VIDEO_PORT = 5555
@@ -57,14 +62,15 @@ class ARDrone(object):
         self.lock = threading.Lock()
         self.speed = 0.2
         self.at(at_config, "general:navdata_demo", "TRUE")
-        self.video_pipe, video_pipe_other = multiprocessing.Pipe()
+#        self.video_pipe, video_pipe_other = multiprocessing.Pipe()
         self.nav_pipe, nav_pipe_other = multiprocessing.Pipe()
         self.com_pipe, com_pipe_other = multiprocessing.Pipe()
-        self.network_process = arnetwork.ARDroneNetworkProcess(nav_pipe_other, video_pipe_other, com_pipe_other)
+        self.network_process = arnetwork.ARDroneNetworkProcess(
+            nav_pipe_other, com_pipe_other)
         self.network_process.start()
         self.ipc_thread = arnetwork.IPCThread(self)
         self.ipc_thread.start()
-        self.image = ""
+#        self.image = ""
         self.navdata = dict()
         self.time = 0
 
