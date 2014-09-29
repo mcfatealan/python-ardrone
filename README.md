@@ -34,6 +34,19 @@ Here is a [video] of the library in action:
 
   [video]: http://youtu.be/2HEV37GbUow
 
+Note: Now, in my reposity, if you want to run the demo, you will need to modify
+some code which I commented because I use openCV to get the Video.
+
+
+Cvideo:
+_______
+
+It is another demo, which use openCV to get the video and also give the remote-
+control with keyboard (the same as that in Demo).
+
+Note: To run this application, you will need to install openCV.
+
+
 Repository:
 -----------
 
@@ -50,6 +63,7 @@ This software was tested with the following setup:
   * Python 2.6.6
   * Psyco 1.6 (recommended)
   * Pygame 1.8.1 (only for the demo)
+  * openCV 2.4.9 (only for the cvideo)
   * Unmodified AR.Drone firmware 1.5.1
 
 
