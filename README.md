@@ -39,7 +39,7 @@ some code which I commented because I use openCV to get the Video.
 
 
 Cvideo:
-_______
+-------
 
 It is another demo, which use openCV to get the video and also give the remote-
 control with keyboard (the same as that in Demo).
